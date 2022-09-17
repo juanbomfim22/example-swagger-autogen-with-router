@@ -32,9 +32,62 @@
     "application/json"
   ],
   "paths": {
+    "/pass/foo": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/pass/bar": {
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/fail/foo": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/fail/bar": {
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/test-get": {
       "get": {
-        "tags": [],
         "description": "",
         "produces": [
           "application/json"
@@ -49,7 +102,6 @@
     },
     "/test-post": {
       "post": {
-        "tags": [],
         "description": "",
         "parameters": [],
         "responses": {
@@ -61,7 +113,6 @@
     },
     "/test-delete/{id}": {
       "delete": {
-        "tags": [],
         "description": "",
         "parameters": [
           {
@@ -136,7 +187,6 @@
     },
     "/v2/test-get": {
       "get": {
-        "tags": [],
         "description": "Description here...",
         "parameters": [],
         "responses": {
@@ -146,12 +196,16 @@
           "401": {
             "description": "Unauthorized"
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
     "/v2/test-delete/{id}": {
       "delete": {
-        "tags": [],
         "description": "",
         "parameters": [
           {
@@ -168,7 +222,12 @@
           "401": {
             "description": "Unauthorized"
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     }
   },

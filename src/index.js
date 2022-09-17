@@ -8,19 +8,31 @@
  * $ npm run start-gendoc
  */
 
-
-const swaggerUi = require('swagger-ui-express')
-const swaggerFile = require('../swagger-output.json')
-const express = require('express')
-const app = express()
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('../swagger-output.json');
+const express = require('express');
+const app = express();
 
 /* Routes */
-const router = require('./routes')
+const router = require('./routes');
+
+const fooBarPass = require('./controllers/FooBarPass') 
+app.use(
+  '/pass',
+  /* #swagger.security = [{
+  "apiKeyAuth": []
+}] */ fooBarPass
+);
+
+require('./controllers/FooBarFail')(app)
+
 
 /* Middlewares */
-app.use(router)
-app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+app.use(router);
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.listen(3000, () => {
-  console.log("Server is running!\nAPI documentation: http://localhost:3000/doc")
-})
+  console.log(
+    'Server is running!\nAPI documentation: http://localhost:3000/doc'
+  );
+});
